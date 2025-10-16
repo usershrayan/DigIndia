@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigIndia: Citizen-Driven Governance Platform</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles for professional look and feel */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Slate 50 */
+        }
+        .header-bg {
+            background-color: #1e3a8a; /* Deep Indigo-900 */
+        }
+        .btn-primary {
+            background-color: #059669; /* Emerald-600 */
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #047857; /* Emerald-700 */
+        }
+        .tab-button.active {
+            background-color: #bfdbfe; /* Blue-200 */
+            color: #1e3a8a; /* Indigo-900 */
+            font-weight: 600;
+            border-bottom: 4px solid #059669; /* Emerald-600 */
+        }
+        .tab-content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out, max-height 0.7s ease-in-out;
+        }
+        .tab-content.active {
+            opacity: 1;
+            max-height: 2000px; /* Large value to accommodate content */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header-bg shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl font-extrabold text-white tracking-tight">DigIndia</span>
+                <span class="text-sm text-emerald-300 hidden sm:block">| Citizen-Driven Governance</span>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#pillars" class="text-white hover:text-emerald-400 transition duration-150">Reforms</a>
+                <a href="#vision" class="text-white hover:text-emerald-400 transition duration-150">Vision</a>
+                <button class="btn-primary text-white px-4 py-1 rounded-lg text-sm font-semibold shadow-md">Get Involved</button>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white p-2 rounded-lg hover:bg-indigo-800">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu (Hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden header-bg absolute w-full z-40 shadow-xl">
+        <a href="#pillars" class="block px-4 py-2 text-white hover:bg-indigo-800 border-t border-indigo-700">Reforms</a>
+        <a href="#vision" class="block px-4 py-2 text-white hover:bg-indigo-800 border-t border-indigo-700">Vision</a>
+        <a href="#" class="block px-4 py-2 text-white hover:bg-indigo-800 border-t border-indigo-700">Get Involved</a>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- Hero Section -->
+        <section class="py-16 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+                A Corruption-Free India, <span class="text-emerald-600">Digitally Empowered</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+                DigIndia envisions a future where citizens have direct control and oversight over governance, eliminating corruption and inefficiency through transparency, accountability, and technology-driven systems.
+            </p>
+            <button class="btn-primary text-white px-8 py-3 text-lg font-bold rounded-xl shadow-lg hover:shadow-xl" onclick="document.getElementById('pillars').scrollIntoView({ behavior: 'smooth' });">
+                Explore the 6 Pillars of Reform
+            </button>
+        </section>
+
+        <!-- Reform Pillars Section -->
+        <section id="pillars" class="py-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">Our 6 Pillars for a New Governance Model</h2>
+
+            <!-- Tab Buttons (Desktop/Tablet) -->
+            <div class="hidden sm:flex flex-wrap justify-center border-b border-gray-300 mb-8">
+                <button class="tab-button px-6 py-3 text-lg text-gray-700 transition duration-300" data-tab="admin">
+                    Administrative
+                </button>
+                <button class="tab-button px-6 py-3 text-lg text-gray-700 transition duration-300" data-tab="judicial">
+                    Judicial
+                </button>
+                <button class="tab-button px-6 py-3 text-lg text-gray-700 transition duration-300" data-tab="education">
+                    Education
+                </button>
+                <button class="tab-button px-6 py-3 text-lg text-gray-700 transition duration-300" data-tab="healthcare">
+                    Healthcare
+                </button>
+                <button class="tab-button px-6 py-3 text-lg text-gray-700 transition duration-300" data-tab="political">
+                    Political & Electoral
+                </button>
+                <button class="tab-button px-6 py-3 text-lg text-gray-700 transition duration-300" data-tab="media">
+                    Media & Social
+                </button>
+            </div>
+
+            <!-- Tab Content / Accordion (All devices) -->
+            <div id="tab-content-container">
+
+                <!-- 1. Administrative Reforms -->
+                <div id="admin" class="tab-content p-6 bg-white rounded-xl shadow-lg mb-6 border-t-4 border-indigo-600">
+                    <h3 class="sm:hidden text-2xl font-semibold text-indigo-700 mb-4">1. Administrative Reforms</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li>Digitize all government departments with complete paperless processes stored securely on cloud servers.</li>
+                        <li>Automate file clearances: if no objection rises within 30 days, files auto-clear to prevent bureaucratic delays.</li>
+                        <li>Implement OTP-based complaint closures to avoid fraudulent resolution.</li>
+                        <li>Introduce a citizen rating system (via Aadhaar OTP) for departments; ratings below 70% lead to senior officials' termination.</li>
+                        <li>Enforce strict, automated penalties for officials who delay or neglect work, such as salary freezes and suspensions.</li>
+                    </ul>
+                </div>
+
+                <!-- 2. Judicial Reforms -->
+                <div id="judicial" class="tab-content p-6 bg-white rounded-xl shadow-lg mb-6 border-t-4 border-indigo-600">
+                    <h3 class="sm:hidden text-2xl font-semibold text-indigo-700 mb-4">2. Judicial Reforms</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li>Select judges through an independent, transparent panel free from political influence.</li>
+                        <li>Use AI to assign court dates, preventing bribery and delays.</li>
+                        <li>Establish fast-track anti-corruption courts in every district, with video-recorded proceedings accessible to involved parties.</li>
+                        <li>Publicize annual judge performance reviews to ensure accountability and quality of justice.</li>
+                        <li>Create an independent oversight body for removal or disciplinary action of errant judges.</li>
+                    </ul>
+                </div>
+
+                <!-- 3. Education Reforms -->
+                <div id="education" class="tab-content p-6 bg-white rounded-xl shadow-lg mb-6 border-t-4 border-indigo-600">
+                    <h3 class="sm:hidden text-2xl font-semibold text-indigo-700 mb-4">3. Education Reforms</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li>Form Parent Management Boards at private schools with rotating membership to regulate fees, teacher salaries, and expenses.</li>
+                        <li>Enforce non-profit operation transparency for schools to prevent fee exploitation.</li>
+                        <li>Ensure teacher accountability through fair pay and competency.</li>
+                        <li>Implement UPSC-style anti-leak examination systems nationwide.</li>
+                        <li>Introduce legal and civic education from early schooling to build awareness of rights and responsibilities.</li>
+                    </ul>
+                </div>
+
+                <!-- 4. Healthcare Reforms -->
+                <div id="healthcare" class="tab-content p-6 bg-white rounded-xl shadow-lg mb-6 border-t-4 border-indigo-600">
+                    <h3 class="sm:hidden text-2xl font-semibold text-indigo-700 mb-4">4. Healthcare Reforms</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li>Standardize pricing for surgeries, treatments, and consultations with government-notified rates.</li>
+                        <li>Conduct real-time digital audits of hospital bills and services.</li>
+                        <li>Impose strict penalties, including license cancellation and legal action against fraudulent practices.</li>
+                    </ul>
+                </div>
+
+                <!-- 5. Political & Electoral Reforms -->
+                <div id="political" class="tab-content p-6 bg-white rounded-xl shadow-lg mb-6 border-t-4 border-indigo-600">
+                    <h3 class="sm:hidden text-2xl font-semibold text-indigo-700 mb-4">5. Political & Electoral Reforms</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li>Mandate 100% transparency in political funding and expenditures accessible online by citizens.</li>
+                        <li>Make Election Commission an independent body with no political interference.</li>
+                        <li>Bar candidates with corruption charges from contesting elections until fully acquitted.</li>
+                        <li>Restrict political dynasties by allowing only one family member per generation to contest elections.</li>
+                        <li>Introduce an Aadhaar-based biannual MP rating system; those scoring below 50% face a lifetime election ban.</li>
+                        <li>Require parties to pre-select four candidates per seat, with citizens voting online for the final candidate.</li>
+                    </ul>
+                </div>
+
+                <!-- 6. Media & Social Reforms -->
+                <div id="media" class="tab-content p-6 bg-white rounded-xl shadow-lg mb-6 border-t-4 border-indigo-600">
+                    <h3 class="sm:hidden text-2xl font-semibold text-indigo-700 mb-4">6. Media & Social Reforms</h3>
+                    <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                        <li>Ban corporate and political ownership of media to ensure unbiased reporting.</li>
+                        <li>Launch public integrity campaigns rewarding whistle-blowers and honesty advocates.</li>
+                        <li>Promote societal shift from tolerance of corruption to zero acceptance through education and public recognition awards.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Vision & Impact Section -->
+        <section id="vision" class="py-16 bg-indigo-50 rounded-xl shadow-inner my-10 p-8">
+            <h2 class="text-3xl font-bold text-center text-indigo-900 mb-6">Vision & Impact: The Citizen-Driven Future</h2>
+            <div class="max-w-4xl mx-auto text-center">
+                <p class="text-xl text-gray-700 leading-relaxed">
+                    DigIndia will serve as the **nation’s first citizen-driven governance platform** integrating real-time data, digital accountability tools, and participatory democracy features to create a self-regulating system bound by integrity and transparency.
+                </p>
+                <p class="text-xl text-gray-700 leading-relaxed mt-4 font-medium">
+                    It will empower every Indian to monitor, rate, and influence public servants and elected representatives, thus transforming India into a truly independent, corruption-free democracy governed by and for its people.
+                </p>
+            </div>
+            <div class="flex justify-center mt-8">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check"><path d="M20 13V6a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v7c0 4.29 1.5 7.15 4.64 8.78a2 2 0 0 0 2.72 0C18.5 20.15 20 17.29 20 13Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="header-bg mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+            <p class="text-white text-sm">&copy; 2025 DigIndia Initiative. All Rights Reserved. | A Platform for Transparency and Accountability. By Shrayan.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            // --- Mobile Menu Toggle ---
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // --- Tabs Logic ---
+            
+            // Function to show a specific tab
+            const showTab = (tabId) => {
+                // Deactivate all buttons and content
+                tabButtons.forEach(button => {
+                    button.classList.remove('active');
+                });
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    content.setAttribute('aria-hidden', 'true');
+                });
+
+                // Activate the selected button and content
+                const selectedButton = document.querySelector(`.tab-button[data-tab="${tabId}"]`);
+                const selectedContent = document.getElementById(tabId);
+
+                if (selectedButton) {
+                    selectedButton.classList.add('active');
+                }
+                if (selectedContent) {
+                    selectedContent.classList.add('active');
+                    selectedContent.setAttribute('aria-hidden', 'false');
+                }
+            };
+
+            // Initial state: Activate the first tab ('admin')
+            showTab('admin');
+
+            // Add click listeners to buttons (for tablet/desktop)
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    showTab(tabId);
+                });
+            });
+
+            // --- Accordion Logic (for mobile - acts as a toggle) ---
+            // On mobile, the tabs disappear, and we simply toggle the content boxes on click of the header (which is hidden on desktop)
+            tabContents.forEach(content => {
+                const header = content.querySelector('h3');
+                if (header) {
+                    header.style.cursor = 'pointer'; // Make it look clickable
+                    header.addEventListener('click', () => {
+                        // For mobile, we just toggle the active state when the user taps the hidden-on-desktop header
+                        // On desktop, the showTab function handles the display. This ensures a good mobile experience.
+                        if (window.innerWidth < 640) { // Apply accordion toggle only on mobile screens (less than sm breakpoint)
+                             content.classList.toggle('active');
+                             const isExpanded = content.classList.contains('active');
+                             content.setAttribute('aria-hidden', !isExpanded);
+                        }
+                    });
+                }
+            });
+
+            // On mobile, all content is initially hidden to act as an accordion.
+            // When the window is small, we hide all content initially.
+            // On DOMContentLoaded, the script runs, showTab('admin') is called, making only 'admin' visible.
+            // On mobile, we want all to be closed initially for the accordion feel, so we re-toggle if width is small.
+             if (window.innerWidth < 640) {
+                 tabContents.forEach(content => {
+                     content.classList.remove('active');
+                     content.setAttribute('aria-hidden', 'true');
+                 });
+             }
+             
+            // On resize, re-evaluate display strategy
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 640) {
+                    // If switching to desktop/tablet view, ensure the active tab is visible
+                    const activeTab = document.querySelector('.tab-button.active');
+                    if (activeTab) {
+                        showTab(activeTab.getAttribute('data-tab'));
+                    } else {
+                        showTab('admin'); // Default to admin if none active
+                    }
+                } else {
+                    // If switching to mobile view, hide the mobile menu if it was open
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+
+            // Ensure the smooth scrolling links work for the mobile menu too
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close mobile menu after link click
+                    if (window.innerWidth < 640) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Initial call to ensure the first tab is shown, and mobile layout is correct on load
+            if (window.innerWidth >= 640) {
+                showTab('admin');
+            }
+        });
+    </script>
+
+</body>
+</html>
